@@ -6,8 +6,5 @@ interface DrinkUpActionDispatcher {
 
     val waiter: Waiter
 
-
-    fun DrinkUpAction.perform() {
-
-    }
+    fun DrinkUpAction.perform() = waiter.sendDrinkToCustomer(drink)
 }
