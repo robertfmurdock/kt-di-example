@@ -11,7 +11,7 @@ class PutLimeInCoconutActionTest : PutLimeInCoconutActionDispatcher, FunSpec() {
             val lime = Lime("Barely even sour")
             val coconut = Coconut("7", "fresh")
 
-            val result: HalfCoconut = PutLimeInCoconutAction(lime, coconut)
+            val result: HalfCoconutDrink = PutLimeInCoconutAction(lime, coconut)
                     .perform()
 
             assertThat(result.milk).isEqualTo(Milk("fresh", "Barely even sour"))
