@@ -1,3 +1,3 @@
 package kt.di.example
 
-data class HalfCoconut(val milk: Milk)
+data class HalfCoconut(val milk: Milk?)

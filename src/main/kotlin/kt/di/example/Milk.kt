@@ -1,3 +1,3 @@
 package kt.di.example
 
-class Milk(flavor: String, addedFlavor: String?)
+data class Milk(val flavor: String, val addedFlavor: String?)
