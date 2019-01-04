@@ -1,6 +1,6 @@
 package kt.di.example
 
-class GetLimeAction
+object GetLimeAction
 
 interface GetLimeActionDispatcher {
 

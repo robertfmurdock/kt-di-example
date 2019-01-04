@@ -1,6 +1,5 @@
 package kt.di.example
 
-import com.nhaarman.mockitokotlin2.inOrder
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
@@ -27,7 +26,7 @@ class CoconutCommandTest : CoconutCommandDispatcher, FunSpec() {
             with(actionDispatcher) {
                 whenever(GetCoconutAction(coconutId).perform())
                         .thenReturn(expectedCoconut)
-                whenever(GetLimeAction().perform())
+                whenever(GetLimeAction.perform())
                         .thenReturn(expectedLime)
                 whenever(PutLimeInCoconutAction(expectedLime, expectedCoconut).perform())
                         .thenReturn(expectedDrink)
@@ -37,7 +36,7 @@ class CoconutCommandTest : CoconutCommandDispatcher, FunSpec() {
                     .perform()
 
             with(verify(actionDispatcher)) { GetCoconutAction(coconutId).perform() }
-            with(verify(actionDispatcher)) { GetLimeAction().perform() }
+            with(verify(actionDispatcher)) { GetLimeAction.perform() }
             with(verify(actionDispatcher)) { PutLimeInCoconutAction(expectedLime, expectedCoconut).perform() }
             with(verify(actionDispatcher)) { DrinkUpAction(expectedDrink).perform() }
         }

@@ -21,7 +21,7 @@ class GetLimeActionTest : GetLimeActionDispatcher, FunSpec() {
 
             whenever(limeRepository.get()).thenReturn(expectedLime)
 
-            val lime: Lime = GetLimeAction().perform()
+            val lime: Lime = GetLimeAction.perform()
 
             assertThat(lime).isEqualTo(expectedLime)
         }
