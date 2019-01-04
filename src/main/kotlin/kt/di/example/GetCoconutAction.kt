@@ -6,7 +6,7 @@ interface GetCoconutActionDispatcher {
 
     val coconutRepository: CoconutRepository
 
-    fun GetCoconutAction.perform() {
-
+    fun GetCoconutAction.perform(): Coconut {
+        return coconutRepository.get(id)
     }
 }
