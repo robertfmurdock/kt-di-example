@@ -6,7 +6,7 @@ import org.assertj.core.api.Assertions.assertThat
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
-class MainCommandTest : MainCommand, FunSpec() {
+class MainCommandDispatcherTest : MainCommandDispatcher, FunSpec() {
 
     override lateinit var outputStream: PrintStream
     private lateinit var byteArrayOutputStream: ByteArrayOutputStream
@@ -21,7 +21,7 @@ class MainCommandTest : MainCommand, FunSpec() {
     init {
         test("main command will return help with no args") {
 
-            execute()
+            MainCommand().perform()
 
             assertThat(output).containsOnly("Help!", "")
         }

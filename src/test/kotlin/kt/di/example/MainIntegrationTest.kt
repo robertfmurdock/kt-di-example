@@ -5,7 +5,7 @@ import org.assertj.core.api.Assertions.assertThat
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
-class AppIntegrationTest : FunSpec({
+class MainIntegrationTest : FunSpec({
 
     test("given no arguments, will return help") {
         val output = captureOutput { main(arrayOf()) }
