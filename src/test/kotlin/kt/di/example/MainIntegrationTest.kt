@@ -26,8 +26,6 @@ class MainIntegrationTest : FunSpec({
 
 })
 
-private fun String?.assert() = assertThat(this)
-
 private fun captureOutput(work: () -> Unit): List<String>? {
     val byteArrayOutputStream = ByteArrayOutputStream()
     val out = System.out
