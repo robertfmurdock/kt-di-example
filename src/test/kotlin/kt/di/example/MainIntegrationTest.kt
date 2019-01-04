@@ -13,6 +13,17 @@ class MainIntegrationTest : FunSpec({
         assertThat(output).containsExactly("Help!", "")
     }
 
+    test("given coconut, will perform all steps") {
+        val output = captureOutput { main(arrayOf("coconut", "3")) }
+
+        assertThat(output).containsExactly(
+                "Got coconut with id 3 for a dime",
+                "Got lime",
+                "Put the lime in the coconut",
+                "Drank em bot up",
+                "")
+    }
+
 })
 
 private fun String?.assert() = assertThat(this)
