@@ -11,12 +11,19 @@ interface CoconutCommandDispatcher {
     private fun PutLimeInCoconutAction.perform() = with(actionDispatcher) { perform() }
     private fun DrinkUpAction.perform() = with(actionDispatcher) { perform() }
 
-    fun CoconutCommand.perform() {
-        val coconut = GetCoconutAction(id).perform()
-        val lime = GetLimeAction.perform()
-        val drink = PutLimeInCoconutAction(lime, coconut).perform()
-        DrinkUpAction(drink).perform()
-    }
+    fun CoconutCommand.perform() = getIngredients()
+            .putLimeInCoconut()
+            .drinkItUp()
+
+    private fun CoconutCommand.getIngredients() = Pair(getCoconut(), getLime())
+
+    private fun HalfCoconutDrink.drinkItUp() = DrinkUpAction(this).perform()
+
+    private fun Pair<Coconut, Lime>.putLimeInCoconut() = PutLimeInCoconutAction(second, first).perform()
+
+    private fun getLime() = GetLimeAction.perform()
+
+    private fun CoconutCommand.getCoconut() = GetCoconutAction(id).perform()
 
 }
 
