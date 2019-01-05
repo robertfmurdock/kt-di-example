@@ -1,11 +1,29 @@
 package kt.di.example
 
-interface CommandDispatcher : MainCommandDispatcher, CoconutCommandDispatcher
+interface RepositoryDirectory {
+    val coconutRepository: CoconutRepository
+    val limeRepository: LimeRepository
+}
 
-val commandDispatcher: CommandDispatcher = object : CommandDispatcher, CoconutStepDispatcher {
+val repositoryDirectory = object : RepositoryDirectory {
     override val coconutRepository: CoconutRepository get() = SingletonCoconutRepository
     override val limeRepository: LimeRepository get() = SingletonLimeRepository
+}
+
+interface ClientDirectory {
+    val waiter: Waiter
+}
+
+val clientDirectory = object : ClientDirectory {
     override val waiter: Waiter get() = SingletonWaiter
+}
+
+interface CommandDispatcher : MainCommandDispatcher, CoconutCommandDispatcher
+
+val commandDispatcher: CommandDispatcher = object : CommandDispatcher,
+        CoconutStepDispatcher,
+        RepositoryDirectory by repositoryDirectory,
+        ClientDirectory by clientDirectory {
     override val actionDispatcher: CoconutStepDispatcher get() = this
 }
 
