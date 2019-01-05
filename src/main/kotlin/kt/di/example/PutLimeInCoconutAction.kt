@@ -8,13 +8,9 @@ interface PutLimeInCoconutActionDispatcher : CoconutSplitSyntax {
             .halfWithMilk()
             .putIn(lime)
 
-    private fun List<HalfCoconut>.halfWithMilk() = mapNotNull {
-        if (it.milk == null) {
-            null
-        } else {
-            HalfCoconutDrink(it.milk)
-        }
-    }.first()
+    private fun List<HalfCoconut>.halfWithMilk() = mapNotNull { it.milk?.makeDrink() }.first()
+
+    private fun Milk.makeDrink(): HalfCoconutDrink? = HalfCoconutDrink(this)
 
     private fun HalfCoconutDrink.putIn(lime: Lime) = copy(milk = milk.mix(lime))
 
