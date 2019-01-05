@@ -3,12 +3,9 @@ package kt.di.example
 interface CommandDispatcher : MainCommandDispatcher, CoconutCommandDispatcher
 
 val commandDispatcher: CommandDispatcher = object : CommandDispatcher, CoconutStepDispatcher {
-    override val coconutRepository: CoconutRepository
-        get() = SingletonCoconutRepository
-    override val limeRepository: LimeRepository
-        get() = SingletonLimeRepository
-    override val waiter: Waiter
-        get() = SingletonWaiter
+    override val coconutRepository: CoconutRepository get() = SingletonCoconutRepository
+    override val limeRepository: LimeRepository get() = SingletonLimeRepository
+    override val waiter: Waiter get() = SingletonWaiter
     override val actionDispatcher: CoconutStepDispatcher get() = this
 }
 
@@ -35,6 +32,5 @@ fun main(args: Array<String>) = commandDispatcher.run {
         args.isEmpty() -> MainCommand().perform()
         args.getOrNull(0) == "coconut" -> CoconutCommand(args[1]).perform()
     }
-
 
 }

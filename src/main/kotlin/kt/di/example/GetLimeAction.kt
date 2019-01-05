@@ -2,9 +2,8 @@ package kt.di.example
 
 object GetLimeAction
 
-interface GetLimeActionDispatcher {
+interface GetLimeActionDispatcher : GetLimeSyntax {
 
-    val limeRepository: LimeRepository
+    fun GetLimeAction.perform() = getLime()
 
-    fun GetLimeAction.perform() = limeRepository.get()
 }

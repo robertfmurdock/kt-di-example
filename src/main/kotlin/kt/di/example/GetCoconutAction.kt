@@ -2,9 +2,7 @@ package kt.di.example
 
 data class GetCoconutAction(val id: String)
 
-interface GetCoconutActionDispatcher {
+interface GetCoconutActionDispatcher : StringGetCoconutSyntax {
 
-    val coconutRepository: CoconutRepository
-
-    fun GetCoconutAction.perform() = coconutRepository.get(id)
+    fun GetCoconutAction.perform() = id.getCoconut()
 }

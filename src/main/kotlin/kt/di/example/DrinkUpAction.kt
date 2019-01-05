@@ -2,9 +2,8 @@ package kt.di.example
 
 data class DrinkUpAction(val drink: Drink)
 
-interface DrinkUpActionDispatcher {
+interface DrinkUpActionDispatcher : DrinkSendToCustomerSyntax {
 
-    val waiter: Waiter
+    fun DrinkUpAction.perform() = drink.sendToCustomer()
 
-    fun DrinkUpAction.perform() = waiter.sendDrinkToCustomer(drink)
 }
