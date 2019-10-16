@@ -10,6 +10,8 @@ Goal - get the simplicity of having a clear context to represent scope, *while* 
 
 The patterns followed here:
 
-  command - a simple data object containing everything needed to do some work
-  command dispatcher - a function that, when given a command, will do the work of a command. The function is presented on an interface. Any dependencies required by the function are enumerated as unimplemented "val" properties on the interface.
-  scope / command dispatcher concrete - a concrete object that implements one or many command dispatchers. As a concrete, any unresolved dependencies (val properties) must be configured in order to compile.
+  action - a simple data object containing everything needed to do some work
+  action dispatcher - a function that, when given a action, will do the work for that action. The function is presented on an interface. Any dependencies required by the function are enumerated as unimplemented "val" properties on the interface.
+  scope - a concrete object that implements one or many action dispatchers. As a concrete, any unresolved dependencies (val properties) must be configured in order to compile.
+  command - an action that is intended to represent a user action.
+  command dispatcher - an action dispatcher for a command.
